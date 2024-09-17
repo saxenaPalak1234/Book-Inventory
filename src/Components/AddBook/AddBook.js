@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./AddBook.css";
+import { toast } from "react-toastify";
 
 const AddBook = ({
   books,
@@ -25,7 +26,7 @@ const AddBook = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title || !author || !genre) {
-      setError("Please fill in all fields");
+     toast.error("Please fill in all fields")
       return;
     }
 
@@ -40,6 +41,7 @@ const AddBook = ({
       const newBook = { title, author, genre };
       updatedBooks = [...books, newBook];
       setBooks(updatedBooks);
+      toast.success("Book added Successfully")
       localStorage.setItem("books", JSON.stringify(updatedBooks));
     }
 
