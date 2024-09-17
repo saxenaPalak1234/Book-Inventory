@@ -13,7 +13,7 @@ const AddBook = ({
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
-  const [error, setError] = useState("");
+
 
   useEffect(() => {
     if (isEditing && currentBook) {
@@ -48,14 +48,12 @@ const AddBook = ({
     setTitle("");
     setAuthor("");
     setGenre("");
-    setError("");
     setIsEditing(false);
   };
 
   return (
     <form className="add-book-form" onSubmit={handleSubmit}>
       <h2>{isEditing ? "Edit Book" : "Add a New Book"}</h2>
-      {error && <p className="error-message">{error}</p>}
       <div className="form-group">
         <label htmlFor="title">Title</label>
         <input
